@@ -10,7 +10,7 @@ RSpec.describe Comment, type: :model do
   describe 'associations' do
     it { is_expected.to have_one(:conversation_item) }
   end
-  
+
   context 'when it has been persisted as part of a conversation item' do
     let(:conversation_item) { create :conversation_item, :status_update }
     let(:status_update) { conversation_item.item }
