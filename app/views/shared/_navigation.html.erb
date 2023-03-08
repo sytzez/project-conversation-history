@@ -1,0 +1,7 @@
+<fieldset>
+  <%= link_to 'Post a comment', new_comment_path %>
+  |
+  <%= link_to 'Update the project status', new_status_update_path %>
+  |
+  <%= link_to 'Sign out', destroy_user_session_path, data: { "turbo-method": :delete } %>
+</fieldset>
