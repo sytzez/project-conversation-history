@@ -2,6 +2,18 @@
 
 > Keep track of you project's status updates!
 
+## Getting started
+
+After cloning the repo, run:
+
+```
+bundle install
+rails db:migrate
+rails s
+```
+
+# Design document
+
 This README serves as a quick and dirty design document for the app.
 
 ## Q&A
