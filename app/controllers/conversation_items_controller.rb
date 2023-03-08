@@ -3,5 +3,7 @@ class ConversationItemsController < ApplicationController
 
   def index
     @conversation_items = ConversationItem.latest_first
+
+    @current_status = StatusUpdate.current&.status&.humanize
   end
 end

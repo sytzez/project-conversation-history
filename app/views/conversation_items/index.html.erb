@@ -1,7 +1,10 @@
-<h1>Project conversation history</h1>
-
 <%= render 'shared/navigation' %>
 
-<br>
+<% if @current_status.present? %>
+  <h2>Current project status:</h2>
+  <h1><%= @current_status %></h1>
+  <hr>
+<% end %>
 
+<h2>Conversation history:</h2>
 <%= render @conversation_items %>
