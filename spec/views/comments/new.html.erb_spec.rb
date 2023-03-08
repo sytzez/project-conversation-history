@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "comments/new", type: :view do
   before(:each) do
-    assign(:comment, Comment.new(
-      content: "MyText"
-    ))
+    assign(:comment, create(:comment))
   end
 
   it "renders new comment form" do

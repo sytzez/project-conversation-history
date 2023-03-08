@@ -6,7 +6,7 @@ RSpec.describe "/comments", type: :request do
   }
 
   let(:invalid_attributes) {
-    {  comment: { content: '' } }
+    { comment: { content: '' } }
   }
 
   describe "GET /new" do
@@ -24,7 +24,7 @@ RSpec.describe "/comments", type: :request do
         }.to change(Comment, :count).by(1)
       end
 
-      it "redirects to the created comment" do
+      it "redirects to the conversation" do
         post comments_url, params: { comment: valid_attributes }
         expect(response).to redirect_to(root_url)
       end
@@ -38,7 +38,7 @@ RSpec.describe "/comments", type: :request do
       end
 
     
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
+      it "renders a response with 422 status" do
         post comments_url, params: { comment: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end

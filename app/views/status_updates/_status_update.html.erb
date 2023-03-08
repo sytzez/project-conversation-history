@@ -1,0 +1,7 @@
+<h2 id="<%= dom_id status_update %>">
+  <% if previous_status.present? %>
+    <%= previous_status.humanize %> => <%= status.humanize %>
+  <% else %>
+    <%= status.humanize %>
+  <% end %>
+</h2>
