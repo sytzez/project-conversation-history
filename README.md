@@ -43,7 +43,7 @@ From the task description and the Q&A above, the following concepts have arisen:
 - **Status update**: A change in the project’s status, made by a user. It would be nice to show it as a transition from an old to a new status (Except on the very first status update). It also needs to show the time it was changed.
 - **Comment**: A user can leave comments. It needs to show a single text field, the author, and the time the comment was placed.
 - **Conversation history**: The list of all comments and status updates in reverse chronological order. This does not need its own database table.
-- **Conversation item**: An item in the project’s conversation history. Currently this can only be a status update or a comment, but it should be extensible. This does not need its own model, but it is rather a contract or interface for a thing that can appear in the project’s history. A history item needs to have a creation time and an author, and it needs to be able to render something to the history feed.
+- **Conversation item**: An item in the project’s conversation history. Currently this can only be a status update or a comment, but it should be extensible. A history item needs to have a creation time and an author, and it needs to be able to render something to the history feed.
 
 This leaves us with the following tables/models:
 - User
@@ -52,14 +52,16 @@ This leaves us with the following tables/models:
   - role: text
   - comments: hasMany
   - status_updates: hasMany
+- ConversationItem
+  - author: belongsTo(User)
+  - created_at: datetime
+  - item: hasOne(polymorphic)
 - StatusUpdate
-  - author: belongsTo(User)
+  - conversation_item: belongsTo
   - status: enum
-  - created_at: datetime
 - Comment
-  - author: belongsTo(User)
+  - conversation_item: belongsTo
   - content: text
-  - created_at: datetime
 
 ## Features
 
