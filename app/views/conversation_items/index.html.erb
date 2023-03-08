@@ -8,3 +8,4 @@
 
 <h2>Conversation history:</h2>
 <%= render @conversation_items %>
+<%= render 'empty_state' if @conversation_items.empty? %>
