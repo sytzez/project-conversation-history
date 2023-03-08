@@ -60,6 +60,10 @@ This leaves us with the following tables/models:
   - conversation_item: belongsTo
   - content: text
 
+I've decided to use a polymorphic relationship between ConversationItem and the specific StatusUpdate and Comment items, 
+rather than using single table inheritance, since that leaves more flexibility for potential new types of ConversationItems,
+and it makes the database tables clearer and more organised.
+
 ## Features
 
 From the task description and the Q&A, the following user stories or features can be distilled:
@@ -77,5 +81,7 @@ From the task description and the Q&A, the following user stories or features ca
   - For status updates, it should show the old and the new status
 - Update the project's status
   - It should add a status update item to the conversation history, and redirect the user to the conversation history.
+  - If the selected status is already the project's current status, it should show an error message.
 - Place a comment
   - It should add the comment to the conversation history, and redirect the user to the conversation history.
+  - If the comment's content is blank, it should show an error message.
