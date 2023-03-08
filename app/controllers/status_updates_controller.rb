@@ -11,7 +11,7 @@ class StatusUpdatesController < ApplicationController
     @conversation_item = ConversationItem.new(author: current_user, item: @status_update)
 
     respond_to do |format|
-      if @conversation_item.save
+      if @status_update.save && @conversation_item.save
         format.html { redirect_to root_url, notice: "Project status was successfully updated." }
       else
         format.html { render :new, status: :unprocessable_entity }

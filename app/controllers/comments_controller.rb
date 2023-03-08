@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @conversation_item = ConversationItem.new(author: current_user, item: @comment)
 
     respond_to do |format|
-      if @conversation_item.save
+      if @comment.save && @conversation_item.save
         format.html { redirect_to root_url, notice: "Comment was successfully posted." }
       else
         format.html { render :new, status: :unprocessable_entity }
