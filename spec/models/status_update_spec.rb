@@ -66,5 +66,19 @@ RSpec.describe StatusUpdate, type: :model do
         expect(subject.previous_status_update).to eq second_update
       end
     end
+
+    describe '#current' do
+      it 'returns the latest status update' do
+        expect(described_class.current).to eq third_update
+      end
+    end
+  end
+
+  context 'when there is no status update yet' do
+    describe '#current' do
+      it 'returns nil' do
+        expect(described_class.current).to be_nil
+      end
+    end
   end
 end
