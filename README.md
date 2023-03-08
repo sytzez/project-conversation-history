@@ -48,10 +48,7 @@ From the task description and the Q&A above, the following concepts have arisen:
 This leaves us with the following tables/models:
 - User
   - email: text
-  - name: text
-  - role: text
-  - comments: hasMany
-  - status_updates: hasMany
+  - conversation_items: hasMany
 - ConversationItem
   - author: belongsTo(User)
   - created_at: datetime
