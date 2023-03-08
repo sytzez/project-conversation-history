@@ -1,6 +1,4 @@
 class StatusUpdate < ApplicationRecord
-  default_scope { includes(:conversation_item).order('conversation_items.created_at': :desc) }
-
   # Enums
   enum status: {
     proposed: 0,
@@ -26,14 +24,18 @@ class StatusUpdate < ApplicationRecord
 
   validate :validate_status_has_changed, on: :create
 
+  # Scopes
+  scope :with_conversation_items, -> { includes(:conversation_item).order('conversation_items.created_at': :desc) }
+
   # The current status of the project. Can be nil.
   def self.current
-    StatusUpdate.first
+    StatusUpdate.with_conversation_items.first
   end
 
   # The status update just before this one. Can be nil.
   def previous_status_update
     self.class
+        .with_conversation_items
         .where('conversation_items.created_at < ?', conversation_item.created_at)
         .first
   end
