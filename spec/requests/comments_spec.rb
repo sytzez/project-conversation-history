@@ -53,14 +53,14 @@ RSpec.describe '/comments', type: :request do
     describe 'GET /new' do
       it 'redirects to the sign in page' do
         get new_comment_url
-        expect(response).to redirect_to(new_user_session_path	)
+        expect(response).to redirect_to(new_user_session_path)
       end
     end
 
     describe 'POST /new' do
       it 'redirects to the sign in page' do
         post comments_url, params: { comment: valid_attributes }
-        expect(response).to redirect_to(new_user_session_path	)
+        expect(response).to redirect_to(new_user_session_path)
       end
     end
   end
